@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Byterpass Web</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        textarea {
+            background-color: #2e2e2e;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            width: 300px;
+            height: 200px;
+            resize: none;
+            font-size: 16px;
+        }
+        textarea:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Byterpass Web</h1>
+
+    <div class="container">
+        <textarea id="input" placeholder="Type here..." oninput="convertText()"></textarea>
+        <textarea id="output" placeholder="Converted text..." readonly></textarea>
+    </div>
+
+    <script>
+        const map = {
+            "a": "α", "b": "в", "c": "ς", "d": "ɗ", "e": "е",
+            "f": "ꜰ", "g": "ɢ", "h": "н", "i": "ΐ", "j": "ј",
+            "k": "κ", "l": "ʟ", "m": "м", "n": "и", "o": "о",
+            "p": "р", "q": "Ԛ", "r": "г", "s": "s", "t": "т",
+            "u": "บ", "v": "ν", "w": "ѡ", "x": "χ", "y": "у",
+            "z": "ᴢ"
+        };
+
+        function convertText() {
+            const input = document.getElementById("input").value;
+            let output = "";
+            for (let char of input) {
+                let lowerChar = char.toLowerCase();
+                output += map[lowerChar] || char;
+            }
+            document.getElementById("output").value = output;
+        }
+    </script>
+
+</body>
+</html>
